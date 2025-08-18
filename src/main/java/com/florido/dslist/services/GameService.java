@@ -44,9 +44,17 @@ public class GameService {
     public ResponseEntity<Object> updateGame(Games game, UUID id){
         var game0 = repository.findById(id);
         if(game0.isEmpty())
-            return ResponseEntity.status(HttpStatus.OK).body("Game not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Game not found");
         var game1 = game0.get();
         BeanUtils.copyProperties(game, game1);
         return ResponseEntity.status(HttpStatus.OK).body(game1);
+    }
+
+    public ResponseEntity<Object> deleteGame(UUID id){
+        var game0 = repository.findById(id);
+        if(game0.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Game not found");
+        repository.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body("game deleted");
     }
 }

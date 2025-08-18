@@ -34,8 +34,13 @@ public class GameController {
         return gameService.getGameId(id);
     }
 
-    @GetMapping("/{id}")
+    @PutMapping ("/{id}")
     public ResponseEntity<Object> updateGame(@RequestBody @Valid Games games,@PathVariable(value = "id") UUID id){
         return gameService.updateGame(games,id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteGame(@PathVariable(value = "id") UUID id){
+        return gameService.deleteGame(id);
     }
 }
