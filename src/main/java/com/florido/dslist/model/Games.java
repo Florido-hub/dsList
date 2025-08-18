@@ -1,7 +1,6 @@
 package com.florido.dslist.model;
 
 import jakarta.persistence.*;
-import org.springframework.beans.BeanUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -11,7 +10,7 @@ import java.util.UUID;
 public class Games {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String title;
 
