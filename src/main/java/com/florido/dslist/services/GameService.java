@@ -28,7 +28,7 @@ public class GameService {
         return dto;
     }
 
-    public GamesRecordDto createGame(@RequestBody @Valid Games games){
+    public GamesRecordDto createGame(Games games){
         return new GamesRecordDto(games);
     }
 
