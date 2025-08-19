@@ -2,11 +2,8 @@ package com.florido.dslist.dtos;
 
 import com.florido.dslist.model.Games;
 
-import java.util.Optional;
-import java.util.UUID;
-
 public class GamesRecordDto{
-    private UUID id;
+    private Long id;
     private String title;
     private Integer year;
     private String imgUrl;
@@ -23,7 +20,7 @@ public class GamesRecordDto{
         this.shortDescription = games.getShortDescription();
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 

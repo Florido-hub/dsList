@@ -10,15 +10,15 @@ import java.util.UUID;
 public class Games {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
+    private Double score;
 
     @Column(name = "game_year")
     private Integer year;
     private String genre;
     private String platforms;
-    private Double score;
     private String imgUrl;
 
     @Column(columnDefinition = "TEXT")
@@ -30,7 +30,7 @@ public class Games {
     public Games() {
     }
 
-    public Games(UUID id, String title, Integer year, String genre, String platforms, Double score, String imgUrl, String shortDescription, String longDescription) {
+    public Games(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl, String shortDescription, String longDescription) {
         this.id = id;
         this.title = title;
         this.year = year;
@@ -42,11 +42,11 @@ public class Games {
         this.longDescription = longDescription;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,6 +56,14 @@ public class Games {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 
     public Integer getYear() {
@@ -80,14 +88,6 @@ public class Games {
 
     public void setPlataform(String platforms) {
         this.platforms = platforms;
-    }
-
-    public Double getScore() {
-        return score;
-    }
-
-    public void setScore(Double score) {
-        this.score = score;
     }
 
     public String getImgUrl() {

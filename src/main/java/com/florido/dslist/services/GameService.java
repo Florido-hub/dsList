@@ -3,11 +3,9 @@ package com.florido.dslist.services;
 import com.florido.dslist.dtos.GamesRecordDto;
 import com.florido.dslist.model.Games;
 import com.florido.dslist.repositories.GameRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.UUID;
