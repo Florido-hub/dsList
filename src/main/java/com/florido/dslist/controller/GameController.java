@@ -21,26 +21,26 @@ public class GameController {
 
     @GetMapping
     public ResponseEntity<List<GamesRecordDto>> getAllGames(){
-        return gameService.getAllGames();
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.getAllGames());
     }
 
     @PostMapping
     public ResponseEntity<Object> createGame(@RequestBody @Valid Games games){
-        return gameService.createGame(games);
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.createGame(games));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getGameId(@PathVariable(value = "id") UUID id){
-        return gameService.getGameId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.getGameId(id));
     }
 
     @PutMapping ("/{id}")
     public ResponseEntity<Object> updateGame(@RequestBody @Valid Games games,@PathVariable(value = "id") UUID id){
-        return gameService.updateGame(games,id);
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.updateGame(games,id));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteGame(@PathVariable(value = "id") UUID id){
-        return gameService.deleteGame(id);
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.deleteGame(id));
     }
 }

@@ -2,6 +2,7 @@ package com.florido.dslist.dtos;
 
 import com.florido.dslist.model.Games;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class GamesRecordDto{
