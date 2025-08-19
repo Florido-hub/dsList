@@ -1,6 +1,7 @@
 package com.florido.dslist.dtos;
 
 import com.florido.dslist.model.Games;
+import org.springframework.beans.BeanUtils;
 
 public class GamesRecordDto{
     private Long id;
@@ -13,11 +14,7 @@ public class GamesRecordDto{
     }
 
     public GamesRecordDto(Games games) {
-        this.id = games.getId();
-        this.title = games.getTitle();
-        this.year = games.getYear();
-        this.imgUrl = games.getImgUrl();
-        this.shortDescription = games.getShortDescription();
+        BeanUtils.copyProperties(games, this);
     }
 
     public Long getId() {

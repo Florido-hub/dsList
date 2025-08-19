@@ -30,17 +30,19 @@ public class GameController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getGameId(@PathVariable(value = "id") UUID id){
+    public ResponseEntity<Object> getGameId(@PathVariable(value = "id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(gameService.getGameId(id));
     }
 
     @PutMapping ("/{id}")
-    public ResponseEntity<Object> updateGame(@RequestBody @Valid Games games,@PathVariable(value = "id") UUID id){
+    public ResponseEntity<Object> updateGame(@RequestBody @Valid Games games,@PathVariable(value = "id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(gameService.updateGame(games,id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteGame(@PathVariable(value = "id") UUID id){
+    public ResponseEntity<Object> deleteGame(@PathVariable(value = "id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(gameService.deleteGame(id));
     }
+
+
 }
