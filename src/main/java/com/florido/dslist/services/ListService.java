@@ -22,6 +22,7 @@ public class ListService {
         return listDto;
     }
 
+    @Transactional(readOnly = true)
     public GameList createList(GameList list){
         listRepository.save(list);
         return list;

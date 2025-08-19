@@ -40,6 +40,7 @@ public class GameService {
         return new GameDto(game.get());
     }
 
+    @Transactional(readOnly = true)
     public GamesRecordDto updateGame(Games game, Long id){
         var game0 = gameRepository.findById(id);
         if(game0.isEmpty())
@@ -50,6 +51,7 @@ public class GameService {
         return new GamesRecordDto(game1);
     }
 
+    @Transactional(readOnly = true)
     public GamesRecordDto deleteGame(Long id) {
         var game0 = gameRepository.findById(id);
         if (game0.isEmpty()) {
