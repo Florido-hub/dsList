@@ -21,15 +21,15 @@ public class GameService {
         this.gameRepository = repository;
     }
 
-    public GamesRecordDto createGame(Games games){
-        return new GamesRecordDto(games);
+    public Games createGame(Games games){
+        gameRepository.save(games);
+        return games;
     }
 
     @Transactional(readOnly = true)
     public List<GamesRecordDto> getAllGames(){
         var games = gameRepository.findAll();
-        List<GamesRecordDto> dto = games.stream().map(x -> new GamesRecordDto(x)).toList();
-        return dto;
+        return games.stream().map(x -> new GamesRecordDto(x)).toList();
     }
 
     @Transactional(readOnly = true)
