@@ -44,7 +44,8 @@ public class GameService {
         if(game0.isEmpty())
             throw new RuntimeException("Game not found");
         var game1 = game0.get();
-        BeanUtils.copyProperties(game, game1);
+        BeanUtils.copyProperties(game, game1, "id");
+        repository.save(game1);
         return new GamesRecordDto(game1);
     }
 
