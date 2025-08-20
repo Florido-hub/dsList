@@ -2,7 +2,9 @@ package com.florido.dslist.services;
 
 import com.florido.dslist.dtos.GameDto;
 import com.florido.dslist.dtos.GamesRecordDto;
+import com.florido.dslist.model.GameList;
 import com.florido.dslist.model.Games;
+import com.florido.dslist.projections.GameMinProjection;
 import com.florido.dslist.repositories.GameRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +61,11 @@ public class GameService {
         }
         gameRepository.deleteById(id);
         return new GamesRecordDto(game0.get());
+    }
+
+    @Transactional(readOnly = true)
+    public List<GamesRecordDto> searchByList(Long listId){
+        List<GameMinProjection> gameProjection = gameRepository.searchByList(listId);
+        return gameProjection.stream().map(x -> new GamesRecordDto(x)).toList();
     }
 }

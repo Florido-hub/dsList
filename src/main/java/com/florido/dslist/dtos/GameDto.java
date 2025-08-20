@@ -1,6 +1,7 @@
 package com.florido.dslist.dtos;
 
 import com.florido.dslist.model.Games;
+import com.florido.dslist.projections.GameMinProjection;
 import org.springframework.beans.BeanUtils;
 
 public class GameDto {

@@ -1,6 +1,7 @@
 package com.florido.dslist.dtos;
 
 import com.florido.dslist.model.Games;
+import com.florido.dslist.projections.GameMinProjection;
 import org.springframework.beans.BeanUtils;
 
 public class GamesRecordDto{
@@ -15,6 +16,10 @@ public class GamesRecordDto{
 
     public GamesRecordDto(Games games) {
         BeanUtils.copyProperties(games, this);
+    }
+
+    public GamesRecordDto(GameMinProjection entity) {
+        BeanUtils.copyProperties(entity, this);
     }
 
     public Long getId() {

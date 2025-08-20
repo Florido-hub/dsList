@@ -1,7 +1,9 @@
 package com.florido.dslist.controller;
 
+import com.florido.dslist.dtos.GamesRecordDto;
 import com.florido.dslist.dtos.ListsDto;
 import com.florido.dslist.model.GameList;
+import com.florido.dslist.services.GameService;
 import com.florido.dslist.services.ListService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class ListController {
     @Autowired
     private ListService listService;
 
+    @Autowired
+    private GameService gameService;
+
     @PostMapping
     public ResponseEntity<Object> createList(@RequestBody @Valid GameList list){
         return ResponseEntity.status(HttpStatus.OK).body(listService.createList(list));
@@ -26,5 +31,10 @@ public class ListController {
     @GetMapping
     public ResponseEntity<List<ListsDto>> getList(){
         return ResponseEntity.status(HttpStatus.OK).body(listService.getAllList());
+    }
+
+    @GetMapping("/{listId}/games")
+    public ResponseEntity<List<GamesRecordDto>> getListGames(@PathVariable Long listId){
+        return ResponseEntity.status(HttpStatus.OK).body(gameService.searchByList(listId));
     }
 }
